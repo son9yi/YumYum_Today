@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-jua: "Jua", sans-serif;
+  --color-pastel-yellow: #FFF9C4;
+  --color-soft-green: #C8E6C9;
+}
+
+body {
+  font-family: "Jua", sans-serif;
+  background-color: var(--color-pastel-yellow);
+  color: #333;
+}
