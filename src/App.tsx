@@ -325,17 +325,19 @@ const UploadView: React.FC<{
         reader.readAsDataURL(file);
       });
 
-      const ai = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+      const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-      const response = await ai.models.generateContent({
-       model: "gemini-pro-vision",
-        contents: {
+    const result = await model.generateContent({
+      contents: [
+        {
           parts: [
             {
               inlineData: {
                 data: base64Data,
                 mimeType: "image/jpeg",
               },
+            },
             },
             {
               text: "이 학교 식단표 이미지에서 날짜와 메뉴를 추출해줘. 날짜는 'YYYY-MM-DD' 형식으로, 메뉴는 문자열 배열로 만들어줘. 불필요한 알레르기 정보 번호나 특수문자는 제거하고 순수 음식 이름만 남겨줘.",
