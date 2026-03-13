@@ -328,7 +328,7 @@ const UploadView: React.FC<{
       const ai = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
       const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+       model: "gemini-pro-vision",
         contents: {
           parts: [
             {
